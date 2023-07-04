@@ -3,7 +3,7 @@ const API_KEY = "7Li84kE4r9A8ep20KGpc56gBV-M6yD0Taajli79m08M";
 
 // const url = "https://api.unsplash.com/search/photos?query=cars&client_id=7Li84kE4r9A8ep20KGpc56gBV-M6yD0Taajli79m08M";
 
-const url = "https://api.unsplash.com/search/photos?page=1&query=";
+// const url = "https://api.unsplash.com/search/photos?page=1&query=";
 
 window.addEventListener('load', () => fetchImages('cities'))
 
