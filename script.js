@@ -1,14 +1,14 @@
 const API_KEY = "7Li84kE4r9A8ep20KGpc56gBV-M6yD0Taajli79m08M";
-// var page = 1;
-// const url = "https://api.unsplash.com/search/photos?page=1&query=cars&client_id=7Li84kE4r9A8ep20KGpc56gBV-M6yD0Taajli79m08M";
-
-// const url = "https://api.unsplash.com/search/photos?query=cars&client_id=7Li84kE4r9A8ep20KGpc56gBV-M6yD0Taajli79m08M";
-
 const url = "https://api.unsplash.com/search/photos?page=1";
-// const url = "https://api.unsplash.com/search/photos?page=";
+
 
 
 window.addEventListener('load', () => fetchImages('cities'))
+
+//when clicked on logo page reloads
+function reload() {
+    window.location.reload();
+}
 
 async function fetchImages(query) {
     const res = await fetch(`${url}&query=${query}&client_id=${API_KEY}`);
@@ -38,8 +38,15 @@ function fillDataInCard(imageClone, result) {
     mainImg.src = result.urls.regular;
     imageTitle.innerHTML = `<h4>Title</h4> : <span>${result.alt_description}</span>`;
     userName.innerHTML = `<h4>Photo by : </h4> ${result.user.name}`;
+
+
+    //functionality to Download
+    imageClone.firstElementChild.firstElementChild.addEventListener('click', () => {
+        window.open(result.links.download, '_blank')
+    })
 }
 
+// functionality for nav links
 var curSelectedNav = null;
 function navItemClick(query) {
     fetchImages(query);
@@ -67,18 +74,6 @@ searchText.addEventListener('keypress', (event) => {
     }
 })
 
-//download
-// const imageClick = document.querySelector('#main-img');
-// imageClick.addEventListener('click', () => console.log(imageClick));
 
-// LOAD MORE FUNCTIONALITY
-// const loadmore = document.querySelector('#load-more-button');
-// const imagesContainer = document.getElementById('images-container');
-// loadmore.addEventListener('click', () => fetchImages('cities'))
-    //     console.log(page);
-    
-//     fetchImages('cities', ++page)
-//     console.log(page);
-// }
 
-// )
+
