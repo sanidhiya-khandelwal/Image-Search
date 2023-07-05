@@ -1,4 +1,3 @@
-<!-- https://sanidhiya-khandelwal.github.io/Image-Search/ -->
 <!DOCTYPE html>
 <html lang="en">
 
@@ -17,14 +16,14 @@
             </a>
             <div class="nav-links">
                 <ul class="flex">
-                    <li class="hover-link nav-items">Dogs</li>
-                    <li class="hover-link nav-items">Mountains</li>
-                    <li class="hover-link nav-items">Cars</li>
+                    <li class="hover-link nav-items" id="Dogs" onclick="navItemClick('Dogs')">Dogs</li>
+                    <li class="hover-link nav-items" id="Mountains" onclick="navItemClick('Mountains')">Mountains</li>
+                    <li class="hover-link nav-items" id="Cars" onclick="navItemClick('Cars')">Cars</li>
                 </ul>
             </div>
             <div class="search-bar flex">
-                <input type="text" placeholder="Search Here...">
-                <button class="search-button ">Search</button>
+                <input type="text" id="search-text" placeholder="Search Here...">
+                <button class="search-button" id="search-button">Search</button>
             </div>
         </div>
     </nav>
@@ -33,6 +32,9 @@
         <div class="images-container container flex" id="images-container">
 
         </div>
+        <!-- <div class="load-more">
+            <button id="load-more-button">Load More</button>
+        </div> -->
     </main>
     <template id="template-images-card">
         <div class="card">
@@ -41,6 +43,7 @@
             </div>
             <div class="card-content">
                 <h3 id="image-title">This is the image</h3>
+                <h3 id="username">Username</h3>
             </div>
         </div>
     </template>
@@ -49,3 +52,4 @@
 </body>
 
 </html>
+<!-- https://sanidhiya-khandelwal.github.io/Image-Search/ -->

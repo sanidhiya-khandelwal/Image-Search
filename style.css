@@ -44,7 +44,8 @@ ul {
 }
 
 nav {
-    background-color: #aed7f6;
+    background-color: grey;
+    color: #ffffff;
     box-shadow: 0 0 4px rgba(0, 0, 0, 0.9);
     position: fixed;
     top: 0;
@@ -71,6 +72,9 @@ li {
 }
 
 /* .nav-items */
+.mystyle {
+    color: purple;
+}
 
 .hover-link {
     cursor: pointer;
@@ -111,7 +115,8 @@ li {
     font-family: 'Roboto', sans-serif;
 }
 
-.search-button:hover {
+.search-button:hover,
+.load-more button:hover {
     background-color: var(--accent-color-dark);
 }
 
@@ -151,6 +156,34 @@ main {
 }
 
 .card-content {
-    padding: 12px;
+    padding: 15px;
+    text-align: start;
+}
+
+.load-more {
+    margin-top: 30px;
+    text-align: center;
+}
+
+.load-more button {
+    padding: 8px 25px;
+    cursor: pointer;
+    border-radius: 5px;
+    border: none;
+    background-color: var(--accent-color);
+    font-weight: 900;
+    font-family: 'roboto', sans-serif;
+    font-size: 15px;
+    box-shadow: 0 0 4px rgba(0, 0, 0, 0.3);
+}
+
+h4 {
+    color: black;
+    display: inline;
+    font-weight: 900;
+}
+
+span {
+    font-size: 18px;
     text-align: center;
 }
