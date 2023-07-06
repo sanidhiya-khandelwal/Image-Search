@@ -52,15 +52,17 @@ nav {
     z-index: 99;
     left: 0;
     right: 0;
+    padding: 1%;
 }
 
 .main-nav {
     justify-content: space-between;
-    padding-block: 8px
+    padding-block: 8px;
 }
 
 .company-logo img {
-    width: 120px;
+    width: 80px;
+    border-radius: 5px;
 }
 
 .nav-links ul {
@@ -86,6 +88,58 @@ li {
 
 .hover-link:active {
     color: red;
+}
+
+/*HAMBURGER MENU*/
+.hamburger-menu {
+    display: flex;
+    flex-direction: column;
+    gap: 9px;
+    height: 35px;
+    width: 10%;
+    cursor: pointer;
+    display: none;
+}
+
+.hamburger-menu span {
+    background-color: #ffffff;
+    border-radius: 15px;
+    /* width: ; */
+    height: 5px;
+}
+
+.hamburger-options {
+    padding: 1%;
+    background-color: grey;
+    /* background-color: aliceblue; */
+    margin-top: 87px;
+    width: 50%;
+    height: 226px;
+    position: fixed;
+    top: -4%;
+    left: 50%;
+    z-index: 100;
+    display: none;
+}
+
+.hamburger-options .flex {
+    flex-direction: column;
+    gap: 5px;
+    text-align: start;
+}
+
+
+.hamburger-options .flex li {
+    background-color: aliceblue;
+    border: 1px solid;
+    border-collapse: collapse;
+    width: 100%;
+    text-align: center;
+    font-size: 20px;
+}
+
+.cross-icon {
+    display: none;
 }
 
 .search-bar {
@@ -120,9 +174,13 @@ li {
     background-color: var(--accent-color-dark);
 }
 
+svg {
+    display: none;
+}
+
 main {
     padding-block: 20px;
-    margin-top: 130px;
+    margin-top: 150px;
 }
 
 .images-container {
@@ -137,10 +195,10 @@ main {
     min-height: 400px;
     box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.3);
     border-radius: 4px;
-
     background-color: #fff;
     overflow: hidden;
     transition-duration: 0.3s;
+    margin-inline: auto;
 }
 
 .card:hover {
@@ -161,6 +219,22 @@ main {
     text-align: start;
 }
 
+.load-more {
+    margin-top: 30px;
+    text-align: center;
+}
+
+.load-more button {
+    padding: 8px 25px;
+    cursor: pointer;
+    border-radius: 5px;
+    border: none;
+    background-color: var(--accent-color);
+    font-weight: 900;
+    font-family: 'roboto', sans-serif;
+    font-size: 15px;
+    box-shadow: 0 0 4px rgba(0, 0, 0, 0.3);
+}
 
 h4 {
     color: black;
@@ -171,4 +245,51 @@ h4 {
 span {
     font-size: 18px;
     text-align: center;
+}
+
+@media(width<770px) {
+    .main-nav {
+        padding-inline: 1%;
+    }
+
+    .company-logo img {
+        width: 60px;
+        margin-top: 5px;
+    }
+
+
+    .nav-links .flex li {
+        display: none;
+    }
+
+    .search-bar {
+        width: 60%;
+        margin-inline: auto;
+    }
+
+    .hamburger-menu {
+        display: flex;
+    }
+
+
+    li {
+        font-size: 13px;
+    }
+
+    .images-container {
+        margin-top: -50px;
+        margin-inline: 5%;
+    }
+
+}
+
+@media(width<500px) {
+    svg {
+        display: block;
+        width: 35px;
+    }
+
+    .search-button {
+        display: none;
+    }
 }

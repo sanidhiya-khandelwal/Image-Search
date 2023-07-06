@@ -1,7 +1,10 @@
 const API_KEY = "7Li84kE4r9A8ep20KGpc56gBV-M6yD0Taajli79m08M";
 const url = "https://api.unsplash.com/search/photos?page=1";
 
-
+// var page = 1;
+// const url = "https://api.unsplash.com/search/photos?page=1&query=cars&client_id=7Li84kE4r9A8ep20KGpc56gBV-M6yD0Taajli79m08M";
+// const url = "https://api.unsplash.com/search/photos?query=cars&client_id=7Li84kE4r9A8ep20KGpc56gBV-M6yD0Taajli79m08M";
+// const url = "https://api.unsplash.com/search/photos?page=";
 
 window.addEventListener('load', () => fetchImages('cities'))
 
@@ -20,11 +23,22 @@ async function fetchImages(query) {
 function bindData(results) {
     const imagesContainer = document.getElementById('images-container');
     const templateImagesCard = document.getElementById('template-images-card');
+    // console.log(results);
+    // const mainImg = document.getElementById('main-img')
+    if (results == '') {
+        alert('No results found ')
+        // mainImg.src = 'https://via.placeholder.com/400x200';
+        return;
+    }
 
     imagesContainer.innerHTML = '';
 
     results.forEach(result => {
-        if (!result.urls.regular || !result.alt_description || !result.user.name) return;
+        if (!result.urls.regular || !result.alt_description || !result.user.name) {
+            // imagesContainer.innerHTML = 'no'
+            // console.log('no');
+            return;
+        }
         const imageClone = templateImagesCard.content.cloneNode(true);
         fillDataInCard(imageClone, result);
         imagesContainer.appendChild(imageClone);
@@ -41,6 +55,9 @@ function fillDataInCard(imageClone, result) {
 
 
     //functionality to Download
+
+    // console.log(imageClone.firstElementChild)
+    // console.log(imageClone.firstElementChild.firstElementChild);
     imageClone.firstElementChild.firstElementChild.addEventListener('click', () => {
         window.open(result.links.download, '_blank')
     })
@@ -54,14 +71,28 @@ function navItemClick(query) {
     curSelectedNav?.classList.remove("mystyle");
     curSelectedNav = element;
     element.classList.add("mystyle");
+    if (innerWidth < 770) {
+        hamburgerMenuFunction();
+    }
+
 }
 
 // function of input search by user
+
 const searchButton = document.getElementById('search-button');
 const searchText = document.getElementById('search-text');
+const imagesContainer = document.getElementById('images-container');
+// const imageTitle = document.querySelector('.card')
+// console.log('1');
 searchButton.addEventListener('click', () => {
-    if (!searchText) return;
+    console.log('2');
+    if (!searchText.value) {
+        alert('Search field is empty')
+        // imagesContainer.innerHTML = 'lk';
+        return
+    }
     fetchImages(searchText.value);
+    searchText.value = '';
     curSelectedNav?.classList.remove("mystyle");
     curSelectedNav = null;
 })
@@ -74,6 +105,48 @@ searchText.addEventListener('keypress', (event) => {
     }
 })
 
+// for search icon
+const searchButtonIcon = document.getElementById('search-button-icon');
+searchButtonIcon.addEventListener('click', () => {
+    if (!searchText.value) {
+        // searchText.style.border = "4px solid red";
+        alert('Search field is empty');
+        // searchText.value
+        return
+    }
+    fetchImages(searchText.value);
+    curSelectedNav?.classList.remove("mystyle");
+    curSelectedNav = null;
+})
 
 
+const hamburgerMenuFunction = () => {
+    const hamburgerOptions = document.querySelector('.hamburger-options');
+    const crossIcon = document.querySelector('#cross-icon');
+    const hamburgerMenu = document.querySelector('#hamburger-menu');
+    if (hamburgerOptions.style.display === 'none' || crossIcon.style.display === 'none') {
+        hamburgerOptions.style.display = 'block';
+        crossIcon.style.display = 'block'
+        hamburgerMenu.style.display = 'none'
+    }
+    else {
+        hamburgerOptions.style.display = 'none';
+        crossIcon.style.display = 'none';
+        hamburgerMenu.style.display = 'flex';
+    }
+}
 
+
+/**
+ * LOAD MORE FUNCTIONALITY
+const loadmore = document.querySelector('#load-more-button');
+const imagesContainer = document.getElementById('images-container');
+loadmore.addEventListener('click', () => fetchImages('cities'))
+        console.log(page);
+    
+    fetchImages('cities', ++page)
+    console.log(page);
+}
+
+)
+ */
