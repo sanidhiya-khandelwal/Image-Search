@@ -23,11 +23,8 @@ async function fetchImages(query) {
 function bindData(results) {
     const imagesContainer = document.getElementById('images-container');
     const templateImagesCard = document.getElementById('template-images-card');
-    // console.log(results);
-    // const mainImg = document.getElementById('main-img')
     if (results == '') {
         alert('No results found ')
-        // mainImg.src = 'https://via.placeholder.com/400x200';
         return;
     }
 
@@ -35,8 +32,6 @@ function bindData(results) {
 
     results.forEach(result => {
         if (!result.urls.regular || !result.alt_description || !result.user.name) {
-            // imagesContainer.innerHTML = 'no'
-            // console.log('no');
             return;
         }
         const imageClone = templateImagesCard.content.cloneNode(true);
@@ -54,10 +49,7 @@ function fillDataInCard(imageClone, result) {
     userName.innerHTML = `<h4>Photo by : </h4> ${result.user.name}`;
 
 
-    //functionality to Download
-
-    // console.log(imageClone.firstElementChild)
-    // console.log(imageClone.firstElementChild.firstElementChild);
+    //functionality to Download image
     imageClone.firstElementChild.firstElementChild.addEventListener('click', () => {
         window.open(result.links.download, '_blank')
     })
@@ -77,18 +69,13 @@ function navItemClick(query) {
 
 }
 
-// function of input search by user
-
 const searchButton = document.getElementById('search-button');
 const searchText = document.getElementById('search-text');
 const imagesContainer = document.getElementById('images-container');
-// const imageTitle = document.querySelector('.card')
-// console.log('1');
+// function of input search by user
 searchButton.addEventListener('click', () => {
-    console.log('2');
     if (!searchText.value) {
         alert('Search field is empty')
-        // imagesContainer.innerHTML = 'lk';
         return
     }
     fetchImages(searchText.value);
@@ -109,9 +96,7 @@ searchText.addEventListener('keypress', (event) => {
 const searchButtonIcon = document.getElementById('search-button-icon');
 searchButtonIcon.addEventListener('click', () => {
     if (!searchText.value) {
-        // searchText.style.border = "4px solid red";
         alert('Search field is empty');
-        // searchText.value
         return
     }
     fetchImages(searchText.value);
@@ -137,16 +122,3 @@ const hamburgerMenuFunction = () => {
 }
 
 
-/**
- * LOAD MORE FUNCTIONALITY
-const loadmore = document.querySelector('#load-more-button');
-const imagesContainer = document.getElementById('images-container');
-loadmore.addEventListener('click', () => fetchImages('cities'))
-        console.log(page);
-    
-    fetchImages('cities', ++page)
-    console.log(page);
-}
-
-)
- */
