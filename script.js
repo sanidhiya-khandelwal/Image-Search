@@ -1,4 +1,4 @@
-const API_KEY = "7Li84kE4r9A8ep20KGpc56gBV-M6yD0Taajli79m08M";
+import { API_KEY } from "./API_KEY.js";
 const url = "https://api.unsplash.com/search/photos?page=1";
 
 // var page = 1;
